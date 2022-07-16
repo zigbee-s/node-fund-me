@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Campaigns</title>
+  </head>
+
+  <body>
+    <button id="connectButton">Connect</button>
+
+    <% keys.forEach((key)=>{%>
+      <div id="<%=key %>">
+        <h3><%=key %></h3>
+        <button id="balanceButton" onclick="pay('<%=key %>');">getBalance</button>
+        <button id="withdrawButton">Withdraw</button>
+        <button id="getOwnerButton">Get Owner</button>
+        <button id="passValueButton" data="abc">Pass value</button>
+        <!-- <form> -->
+        <label for="ethAmount">ETH Amount</label>
+        <input id="ethAmount" placeholder="0.1" />
+        <button type="button" id="fundButton" > Fund </button>
+        <!-- </form> -->
+      </div>
+    <%});%>
+  </body>
+  <script src="static/campaign.js" type="module"></script>
+</html>
