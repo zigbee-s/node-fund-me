@@ -1,5 +1,5 @@
 import { ethers } from "https://cdn-cors.ethers.io/lib/ethers-5.5.4.esm.min.js";
-import { abi, contractAddress } from "./factory_constants.js"
+import { f_abi, f_contractAddress } from "./factory_constants.js"
 
 const connectButton = document.getElementById("connectButton")
 const registerButton = document.getElementById("registerButton")
@@ -30,7 +30,7 @@ async function register() {
   if (typeof window.ethereum !== "undefined") {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const signer = provider.getSigner()
-    const contract = new ethers.Contract(contractAddress, abi, signer)
+    const contract = new ethers.Contract(f_contractAddress, f_abi, signer)
     try {
       const transactionResponse = await contract.deployFundMeContract()
       await listenForTransactionMine(transactionResponse, provider)
@@ -48,7 +48,7 @@ async function getKeys(){
   if (typeof window.ethereum !== "undefined") {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const signer = provider.getSigner()
-    const contract = new ethers.Contract(contractAddress, abi, signer)
+    const contract = new ethers.Contract(f_contractAddress, f_abi, signer)
     try {
       const result = await contract.getKeys()
       console.log(result)

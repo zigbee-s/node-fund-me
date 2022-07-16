@@ -3,21 +3,23 @@
   <head>
     <title>Campaigns</title>
   </head>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <body>
     <button id="connectButton">Connect</button>
 
     <% keys.forEach((key)=>{%>
-      <div id="<%=key %>">
+      <div>
         <h3><%=key %></h3>
-        <button id="balanceButton" onclick="pay('<%=key %>');">getBalance</button>
-        <button id="withdrawButton">Withdraw</button>
-        <button id="getOwnerButton">Get Owner</button>
-        <button id="passValueButton" data="abc">Pass value</button>
+        <button data-id="<%=key %>" class="balance">getBalance</button>
+        <button data-id="<%=key %>" class="withdraw">Withdraw</button>
+        <button data-id="<%=key %>" class="getOwner">Get Owner</button>
+        
         <!-- <form> -->
-        <label for="ethAmount">ETH Amount</label>
-        <input id="ethAmount" placeholder="0.1" />
-        <button type="button" id="fundButton" > Fund </button>
+        <form data-id="<%=key %>" class="fund" onsubmit="return false">
+          <label for="ethAmount">ETH Amount</label>
+          <input id="<%=key %>" class="ethAmount" placeholder="0.1" />
+          <input type="submit" value="Fund">
+        </form>
         <!-- </form> -->
       </div>
     <%});%>
